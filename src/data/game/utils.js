@@ -74,7 +74,7 @@ export const checkIfWinner = ({ board, lastCellKey, lastCellValue }) => {
 
   // if there is no winner and all cells are filled, it's a draw
   const isDraw =
-    winner !== CELL_VALUES.Empty &&
+    winner === CELL_VALUES.Empty &&
     !Object.values(board).some((cell) => cell === CELL_VALUES.Empty)
 
   return {
