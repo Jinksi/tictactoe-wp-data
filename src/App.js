@@ -6,6 +6,7 @@ import Board from './components/board'
 import BoardButtons from './components/board-buttons'
 import BoardTitle from './components/board-title'
 import Scoreboard from './components/scoreboard'
+import Players from './components/players'
 import './style.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <Players />
       <BoardTitle isXTurn={isXTurn} />
       <Board isXTurn={isXTurn} setIsXTurn={setIsXTurn} />
       <BoardButtons setIsXTurn={setIsXTurn} />

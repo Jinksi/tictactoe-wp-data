@@ -103,3 +103,36 @@ h2 {
 .scoreboard__score-title {
   margin: 0;
 }
+
+.players {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.players__list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  width: 150;
+}
+
+.player__avatar {
+  border-radius: 100%;
+  border: 2px solid black;
+  height: 100px;
+  width: 100px;
+  background-color: whitesmoke;
+}
