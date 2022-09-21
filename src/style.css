@@ -91,3 +91,10 @@ h2 {
 .restart-game {
   margin: 40px 0 0;
 }
+
+.scoreboard {
+  display: flex;
+  gap: 20px;
+  margin: 40px 0 0;
+  text-align: center;
+}

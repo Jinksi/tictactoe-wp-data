@@ -5,6 +5,7 @@ import { useBoardData } from './data/game/hooks'
 import Board from './components/board'
 import BoardButtons from './components/board-buttons'
 import BoardTitle from './components/board-title'
+import Scoreboard from './components/scoreboard'
 import './style.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Board isXTurn={isXTurn} setIsXTurn={setIsXTurn} />
       <BoardButtons setIsXTurn={setIsXTurn} />
       {winner !== CELL_VALUES.Empty && <Confetti />}
+      <Scoreboard />
     </div>
   )
 }
