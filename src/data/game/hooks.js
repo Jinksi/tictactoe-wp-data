@@ -3,8 +3,8 @@ import { STORE_NAME } from '../index'
 import { BOARD_SIZE, CELL_VALUES } from './utils'
 
 export const useBoardData = () => {
-  const { setCell, resetBoard } = useDispatch(STORE_NAME)
-  return useSelect((select) => {
+  // We use the `useSelect` hook to get data from the store
+  const { board, winner, isDraw } = useSelect((select) => {
     // Selectors are functions that return data from the store.
     // Defined in ./selectors.js
     const { getBoard, getWinner, getIsDraw } = select(STORE_NAME)
@@ -13,10 +13,24 @@ export const useBoardData = () => {
       board: getBoard(),
       winner: getWinner(),
       isDraw: getIsDraw(),
-      setCell,
-      resetBoard,
-      BOARD_SIZE,
-      CELL_VALUES,
     }
   })
+
+  // We use the `useDispatch` hook to dispatch actions to the store
+  const { setCell, resetBoard } = useDispatch(STORE_NAME)
+
+  return {
+    // Returning state from the store
+    board,
+    winner,
+    isDraw,
+
+    // Returning dispatch actions
+    setCell,
+    resetBoard,
+
+    // Returning constants
+    BOARD_SIZE,
+    CELL_VALUES,
+  }
 }
