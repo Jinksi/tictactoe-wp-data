@@ -26,4 +26,4 @@ Check out the `controls-resolvers` branch to see additional `players` state with
 
 ## Resources
 
-* I strongly recommend reading [A Practical Overview of the @wordpress/data API])(https://unfoldingneurons.com/series/practical-overview-of-wp-data).
+* I strongly recommend reading [A Practical Overview of the @wordpress/data API](https://unfoldingneurons.com/series/practical-overview-of-wp-data).
