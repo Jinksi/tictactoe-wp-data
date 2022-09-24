@@ -23,3 +23,7 @@ View the [learnup](docs/wp-data-learnup.md) for a detailed explanation of the co
 The `@wordpress/data` implementation of state management for @aprea's [TicTacToe app](https://github.com/aprea/tictactoe) is available in the [src/data](src/data) directory. Some modifications and additions were made to the component structure to resemble a large-scale app.
 
 Check out the `controls-resolvers` branch to see additional `players` state with async selectors and resolvers.
+
+## Resources
+
+* I strongly recommend reading [A Practical Overview of the @wordpress/data API])(https://unfoldingneurons.com/series/practical-overview-of-wp-data).
