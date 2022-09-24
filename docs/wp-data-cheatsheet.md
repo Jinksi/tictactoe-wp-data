@@ -132,7 +132,7 @@ export default {
 }
 ```
 
-The [￼`@wordpress/data-controls`￼ package](https://github.com/WordPress/gutenberg/tree/master/packages/data-controls) is used to provide commonly-used controls:
+The [`@wordpress/data-controls` package](https://github.com/WordPress/gutenberg/tree/master/packages/data-controls) is used to provide commonly-used controls:
 
 - `apiFetch`: for performing a WP REST API fetch.
 - `dispatch`: for dispatching another action in a different store.
@@ -195,7 +195,7 @@ registerStore(STORE_NAME, {
 })
 ```
 
-**Note:** [￼`registerStore`￼ is deprecated, replaced by ￼`register`￼](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-data/#registerstore). I’ll continue demonstrating `registerStore` to be consistent with WCPay usage.
+**Note:** [`registerStore` is deprecated, replaced by `register`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-data/#registerstore). I’ll continue demonstrating `registerStore` to be consistent with WCPay usage.
 
 You will likely have multiple directories with individual states and logic that you would like to combine into one. For example, [WCPay](https://github.com/Automattic/woocommerce-payments/blob/9621b920555073429b39084e08173a1d4f561c7a/client/data/store.js#L26) has separate states and logic for `deposits`, `disputes`, `transactions`, etc. In this case, we combine them into a single store, using the `combineReducers` function to create a single reducer.
 
@@ -296,7 +296,3 @@ const useProduct = ({ id }) => {
 ### Fetch data from a REST API to update state
 
 <mark>**TODO**</mark>
-
-```
-
-```
