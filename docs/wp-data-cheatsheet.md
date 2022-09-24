@@ -226,22 +226,52 @@ registerStore(STORE_NAME, {
 
 ### Use with React
 
-<mark>**TODO**</mark>
-
 #### `useSelect`
 
 The `useSelect` hook lets you listen to a slice of state using one or more selectors.
 
-```js
+```jsx
+import { useSelect } from '@wordpress/data'
 
+// Use within a functional component
+const Product = ({ id }) => {
+  const product = useSelect(
+    (select) => {
+      const { getProduct } = select(STORE_NAME)
+      return getProduct(id)
+    },
+    [id]
+  )
+  return <div>{product.name}</div>
+}
+
+// Or use within a custom hook (also with a shortened syntax)
+const useProduct = ({ id }) => {
+  const product = useSelect((select) => select(STORE_NAME).getProduct(id), [id])
+  return product
+}
 ```
 
 #### `useDispatch`
 
-The `useDispatch` hook lets you dispatch an action to the store.
+The `useDispatch` hook lets you dispatch an action to the store. `useDispatch(STORE_NAME)` returns an object with all the action creators defined in the store.
 
-```js
+```jsx
+import { useDispatch } from '@wordpress/data'
 
+// Use within a functional component
+const ProductUpdateButton = ({ id }) => {
+  const { updateProduct } = useDispatch(STORE_NAME)
+  const update = () => updateProduct({ id, title: 'New title' })
+  return <button onClick={update}>Update Product</button>
+}
+
+// Or use within a custom hook, alongside `useSelect`
+const useProduct = ({ id }) => {
+  const { updateProduct } = useDispatch(STORE_NAME)
+  const product = useSelect((select) => select(STORE_NAME).getProduct(id), [id])
+  return { product, updateProduct }
+}
 ```
 
 ### View and debug what’s in the store, actions, etc.
@@ -266,3 +296,7 @@ The `useDispatch` hook lets you dispatch an action to the store.
 ### Fetch data from a REST API to update state
 
 <mark>**TODO**</mark>
+
+```
+
+```
