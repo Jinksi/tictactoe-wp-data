@@ -132,7 +132,7 @@ export default {
 }
 ```
 
-The [￼`@wordpress/data-controls`￼ package](https://github.com/WordPress/gutenberg/tree/master/packages/data-controls) is used to provide commonly-used controls:
+The [`@wordpress/data-controls` package](https://github.com/WordPress/gutenberg/tree/master/packages/data-controls) is used to provide commonly-used controls:
 
 - `apiFetch`: for performing a WP REST API fetch.
 - `dispatch`: for dispatching another action in a different store.
@@ -195,7 +195,7 @@ registerStore(STORE_NAME, {
 })
 ```
 
-**Note:** [￼`registerStore`￼ is deprecated, replaced by ￼`register`￼](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-data/#registerstore). I’ll continue demonstrating `registerStore` to be consistent with WCPay usage.
+**Note:** [`registerStore` is deprecated, replaced by `register`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-data/#registerstore). I’ll continue demonstrating `registerStore` to be consistent with WCPay usage.
 
 You will likely have multiple directories with individual states and logic that you would like to combine into one. For example, [WCPay](https://github.com/Automattic/woocommerce-payments/blob/9621b920555073429b39084e08173a1d4f561c7a/client/data/store.js#L26) has separate states and logic for `deposits`, `disputes`, `transactions`, etc. In this case, we combine them into a single store, using the `combineReducers` function to create a single reducer.
 
@@ -226,22 +226,52 @@ registerStore(STORE_NAME, {
 
 ### Use with React
 
-<mark>**TODO**</mark>
-
 #### `useSelect`
 
 The `useSelect` hook lets you listen to a slice of state using one or more selectors.
 
-```js
+```jsx
+import { useSelect } from '@wordpress/data'
 
+// Use within a functional component
+const Product = ({ id }) => {
+  const product = useSelect(
+    (select) => {
+      const { getProduct } = select(STORE_NAME)
+      return getProduct(id)
+    },
+    [id]
+  )
+  return <div>{product.name}</div>
+}
+
+// Or use within a custom hook (also with a shortened syntax)
+const useProduct = ({ id }) => {
+  const product = useSelect((select) => select(STORE_NAME).getProduct(id), [id])
+  return product
+}
 ```
 
 #### `useDispatch`
 
-The `useDispatch` hook lets you dispatch an action to the store.
+The `useDispatch` hook lets you dispatch an action to the store. `useDispatch(STORE_NAME)` returns an object with all the action creators defined in the store.
 
-```js
+```jsx
+import { useDispatch } from '@wordpress/data'
 
+// Use within a functional component
+const ProductUpdateButton = ({ id }) => {
+  const { updateProduct } = useDispatch(STORE_NAME)
+  const update = () => updateProduct({ id, title: 'New title' })
+  return <button onClick={update}>Update Product</button>
+}
+
+// Or use within a custom hook, alongside `useSelect`
+const useProduct = ({ id }) => {
+  const { updateProduct } = useDispatch(STORE_NAME)
+  const product = useSelect((select) => select(STORE_NAME).getProduct(id), [id])
+  return { product, updateProduct }
+}
 ```
 
 ### View and debug what’s in the store, actions, etc.
