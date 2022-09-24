@@ -17,3 +17,9 @@ View the [cheatsheet](docs/wp-data-cheatsheet.md) for a quick reference of termi
 ## Learnup
 
 View the [learnup](docs/wp-data-learnup.md) for a detailed explanation of the concepts and API. This is a Marp presentation, so you can view it in [Marp](https://marp.app/) or [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode).
+
+## Example App
+
+The `@wordpress/data` implementation of state management for @aprea's [TicTacToe app](https://github.com/aprea/tictactoe) is available in the [src/data](src/data) directory. Some modifications and additions were made to the component structure to resemble a large-scale app.
+
+Check out the `controls-resolvers` branch to see additional `players` state with async selectors and resolvers.
