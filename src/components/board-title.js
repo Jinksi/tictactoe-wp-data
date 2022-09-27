@@ -1,7 +1,8 @@
-import { useBoardData } from '../data/game/hooks'
+import { useGameOutcome } from '../data/game/hooks'
+import { CELL_VALUES } from '../data/game/utils'
 
 const BoardTitle = ({ isXTurn }) => {
-  const { winner, isDraw, CELL_VALUES } = useBoardData()
+  const { winner, isDraw } = useGameOutcome()
 
   return (
     <h2>

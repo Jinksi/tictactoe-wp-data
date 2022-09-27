@@ -1,7 +1,7 @@
-import { useBoardData } from '../data/game/hooks'
+import { useBoardActions } from '../data/game/hooks'
 
 const BoardButtons = ({ setIsXTurn }) => {
-  const { resetBoard } = useBoardData()
+  const { resetBoard } = useBoardActions()
 
   return (
     <button

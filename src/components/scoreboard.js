@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useBoardData } from '../data/game/hooks'
+import { useGameOutcome } from '../data/game/hooks'
+import { CELL_VALUES } from '../data/game/utils'
 
 const Scoreboard = () => {
-  const {
-    winner,
-    isDraw,
-    CELL_VALUES: { X, O },
-  } = useBoardData()
+  const { winner, isDraw } = useGameOutcome()
+  const { X, O } = CELL_VALUES
   // Using local state to track the score
   // But this could be global state as well
   const [score, setScore] = useState({
